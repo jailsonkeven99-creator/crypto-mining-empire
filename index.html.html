@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Mining Empire | Telegram BETA 0.4</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#080e1c;--card:#15223a;--line:#304461;--muted:#a7bad3;--gold:#ffc44c;--mint:#57e0b0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#223e64,#080e1c 65%);color:#f3f7ff;font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1060px;margin:auto;padding:16px 14px 80px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:6px 0 18px}
+h1{font-size:clamp(22px,5vw,31px);margin:0;color:var(--gold)}h2{font-size:19px;margin:0 0 14px}small,.muted{color:var(--muted)}
+.tag{border:1px solid #47628a;border-radius:99px;padding:6px 10px;font-size:11px;color:#b9d6ff;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat,.panel{background:linear-gradient(160deg,#192a47,#111c31);border:1px solid var(--line);border-radius:17px;padding:15px;box-shadow:0 10px 30px #0002}
+.stat strong{display:block;color:var(--gold);font-size:24px;margin-top:5px}.stat small{font-size:12px}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:18px 0 12px;padding-bottom:4px}.tabs button{white-space:nowrap;flex:1}
+button{background:#263b59;color:#e8f3ff;border:1px solid #3b5274;border-radius:12px;padding:12px 14px;font-weight:750;cursor:pointer;font:inherit}
+button.active,button.primary{background:linear-gradient(110deg,#ffcf5d,#e6a52b);color:#221c10;border:0;font-weight:850}
+button:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-columns:1.15fr 1fr;gap:13px}.stack{display:grid;gap:13px}
+.mine{min-height:310px;position:relative;overflow:hidden;border:1px solid #39547a;border-radius:16px;background:radial-gradient(circle at 50% 58%,#294a65,#111e34 65%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px}
+.mine:before{content:"";position:absolute;inset:0;opacity:.28;background:repeating-linear-gradient(135deg,transparent 0 40px,#47708a 41px 42px,transparent 43px 90px);pointer-events:none}
+.ore{font-size:96px;filter:drop-shadow(0 8px 20px #00eaff55);animation:float 2.8s ease-in-out infinite;user-select:none;z-index:1}
+@keyframes float{50%{transform:translateY(-9px)}}.ore.hit{animation:none;transform:scale(.89) rotate(-8deg)}
+.mine button{z-index:1;font-size:17px;padding:14px 25px}.spark{position:absolute;pointer-events:none;color:#ffd36a;font-weight:900;animation:rise .75s forwards;z-index:3}
+@keyframes rise{to{transform:translateY(-75px);opacity:0}}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.item{padding:13px 0;border-bottom:1px solid #304461}.item:last-child{border:0}.item p{margin:4px 0;color:var(--muted);font-size:13px}
+.pill{display:inline-block;border-radius:99px;padding:4px 9px;background:#284560;color:#c8e6ff;font-size:12px}
+.progress{height:9px;border-radius:99px;background:#2a3b56;overflow:hidden;margin-top:8px}.progress div{height:100%;background:linear-gradient(90deg,#37b8cc,#68edb3);transition:width .25s}
+.view{display:none}.view.active{display:block}.mission{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}
+.mission:last-child{border:0}.mission p{margin:5px 0;color:var(--muted);font-size:13px}.note{background:#122940;border:1px solid #2d526c;border-radius:12px;padding:12px;color:#bddcf0;font-size:13px;margin-top:12px}
+.rank{display:flex;justify-content:space-between;padding:13px;border-bottom:1px solid var(--line)}.rank:last-child{border:0}
+footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:12px}.top{align-items:flex-start}.tabs button{font-size:13px;padding:10px}.mine{min-height:265px}}
+</style></head><body><main>
+<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.4</span></div>
+<div class="stats">
+<div class="stat"><small>🪙 Ouro</small><strong id="gold">0</strong></div>
+<div class="stat"><small>⚙️ Ouro/seg</small><strong id="rate">0</strong></div>
+<div class="stat"><small>👆 Por clique</small><strong id="power">1</strong></div>
+<div class="stat"><small>⭐ Nível</small><strong id="level">1</strong></div>
+</div>
+<div class="tabs" role="tablist"><button class="active" data-tab="mina">⛏️ Mina</button><button data-tab="missoes">🎯 Missões</button><button data-tab="amigos">👥 Amigos</button><button data-tab="ranking">🏆 Ranking</button></div>
+<section class="view active" id="view-mina"><div class="grid">
+<div class="stack"><div class="panel"><h2>💎 Sua mina</h2><div class="mine" id="minearea"><div class="ore" id="ore">💎</div><button class="primary" id="mine">⛏️ MINERAR +1</button><small>Toque para extrair ouro e ganhar experiência</small></div>
+<div style="margin-top:13px" class="row"><b id="xptext">Experiência 0 / 20</b><span class="pill" id="crystal">💠 0 cristais</span></div><div class="progress"><div id="xpbar"></div></div></div></div>
+<div class="panel"><h2>🛒 Loja de melhorias</h2><div id="shop"></div></div>
+</div></section>
+<section class="view" id="view-missoes"><div class="panel"><h2>🎯 Missões diárias</h2><small>Renovadas a cada dia, no horário do seu dispositivo.</small><div id="missions"></div><div class="note">As recompensas são apenas ouro virtual da BETA. Não podem ser sacadas.</div></div></section>
+<section class="view" id="view-amigos"><div class="panel"><h2>👥 Convide amigos</h2><p class="muted">Compartilhe seu jogo com amigos no Telegram.</p><button class="primary" id="invite">📨 Compartilhar convite</button><button id="copyinvite">🔗 Copiar link</button><div class="note" id="inviteinfo">Bônus por indicação ainda não é automático. Precisaremos de servidor e validação para confirmar convites reais.</div></div></section>
+<section class="view" id="view-ranking"><div class="panel"><h2>🏆 Ranking demonstrativo</h2><p class="muted">Este ranking usa apenas seu progresso local. Ranking real entre jogadores exigirá banco de dados.</p><div id="ranks"></div></div></section>
+<div class="row" style="margin-top:15px"><button id="save">💾 Salvar</button><button id="reset">🗑️ Reiniciar progresso</button></div>
+<div id="toast" class="note" role="status" style="display:none"></div>
+<footer>Crypto Mining Empire • BETA 0.4 • Sem token, Pix ou recompensas financeiras • Progresso salvo neste navegador</footer>
+</main>
+<script>
+(()=>{
+'use strict';
+const tg=window.Telegram?.WebApp;try{tg?.ready();tg?.expand()}catch(e){}
+const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD='crypto-mining-empire-beta-v1';
+const today=()=>new Date().toLocaleDateString('en-CA');
+const fresh=()=>({gold:0,xp:0,level:1,crystals:0,clicks:0,earned:0,owned:{pick:0,worker:0,drill:0,robot:0},day:today(),dailyClicks:0,dailyEarned:0,claimed:{},last:Date.now()});
+const items=[{id:'pick',name:'⛏️ Picareta reforçada',base:15,mult:1.55,desc:'+1 ouro por clique'},{id:'worker',name:'👷 Minerador automático',base:35,mult:1.6,desc:'+1 ouro por segundo'},{id:'drill',name:'⚙️ Broca industrial',base:220,mult:1.65,desc:'+6 ouro por segundo'},{id:'robot',name:'🤖 Robô minerador',base:1400,mult:1.7,desc:'+30 ouro por segundo'}];
+let s=fresh();let previous=null;
+try{previous=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem(OLD)||'null')}catch(e){}
+if(previous&&typeof previous==='object'){s={...s,...previous,owned:{...s.owned,...(previous.owned||{})},claimed:previous.claimed||{}};for(const k of ['gold','xp','level','crystals','clicks','earned','dailyClicks','dailyEarned'])s[k]=Number.isFinite(+s[k])?Math.max(0,+s[k]):0;for(const i of items)s.owned[i.id]=Math.max(0,Math.min(10000,Math.floor(+s.owned[i.id]||0)));}
+if(s.day!==today()){s.day=today();s.dailyClicks=0;s.dailyEarned=0;s.claimed={};}
+const fmt=n=>Math.floor(n).toLocaleString('pt-BR');
+const power=()=>1+s.owned.pick;
+const rate=()=>s.owned.worker+6*s.owned.drill+30*s.owned.robot;
+const cost=i=>Math.ceil(i.base*Math.pow(i.mult,s.owned[i.id]));
+function save(){s.last=Date.now();try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){toast('Não foi possível salvar neste navegador.');}}
+let toastTimeout;function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').style.display='none',3200)}
+function addGold(amount,manual=false){s.gold+=amount;s.earned+=amount;s.dailyEarned+=amount;if(manual){s.clicks++;s.dailyClicks++;s.xp+=2;while(s.xp>=s.level*20){s.xp-=s.level*20;s.level++;s.crystals++;toast('⭐ Subiu para o nível '+s.level+'! +1 cristal');}}render();}
+const missions=[{id:'tap',name:'⛏️ Minerador dedicado',desc:'Clique 30 vezes hoje',target:30,progress:()=>s.dailyClicks,reward:100},{id:'gold',name:'🪙 Caça ao ouro',desc:'Produza 500 ouros hoje',target:500,progress:()=>s.dailyEarned,reward:150},{id:'level',name:'⭐ Evolução',desc:'Alcance o nível 5',target:5,progress:()=>s.level,reward:250}];
+function render(){
+$('gold').textContent=fmt(s.gold);$('rate').textContent=fmt(rate());$('power').textContent=fmt(power());$('level').textContent=fmt(s.level);$('mine').textContent='⛏️ MINERAR +'+fmt(power());$('crystal').textContent='💠 '+fmt(s.crystals)+' cristais';$('xptext').textContent='Experiência '+fmt(s.xp)+' / '+fmt(s.level*20);$('xpbar').style.width=Math.min(100,s.xp/(s.level*20)*100)+'%';
+$('shop').innerHTML=items.map(i=>`<div class="item row"><div><b>${i.name}</b><p>${i.desc} · Possui ${s.owned[i.id]}</p><span class="pill">🪙 ${fmt(cost(i))}</span></div><button data-buy="${i.id}" ${s.gold<cost(i)?'disabled':''}>Comprar</button></div>`).join('');
+$('missions').innerHTML=missions.map(m=>{const p=Math.min(m.target,m.progress());return `<div class="mission"><div style="flex:1"><b>${m.name}</b><p>${m.desc} · ${fmt(p)}/${fmt(m.target)} · Prêmio: ${fmt(m.reward)} ouros</p><div class="progress"><div style="width:${p/m.target*100}%"></div></div></div><button data-claim="${m.id}" ${s.claimed[m.id]||p<m.target?'disabled':''}>${s.claimed[m.id]?'Feito':'Resgatar'}</button></div>`}).join('');
+$('ranks').innerHTML=`<div class="rank"><b>🥇 Você (neste dispositivo)</b><b>${fmt(s.earned)} 🪙</b></div><div class="note">Ainda não existem posições de outros jogadores nesta versão.</div>`;
+}
+$('mine').onclick=()=>{addGold(power(),true);const ore=$('ore');ore.classList.add('hit');setTimeout(()=>ore.classList.remove('hit'),140);const a=document.createElement('span');a.className='spark';a.textContent='+'+fmt(power());a.style.left=(42+Math.random()*17)+'%';a.style.top='45%';$('minearea').append(a);setTimeout(()=>a.remove(),750);save();};
+$('shop').onclick=e=>{const b=e.target.closest('[data-buy]');if(!b)return;const i=items.find(i=>i.id===b.dataset.buy);if(!i||s.gold<cost(i))return;s.gold-=cost(i);s.owned[i.id]++;save();render();toast('Melhoria comprada!');};
+$('missions').onclick=e=>{const b=e.target.closest('[data-claim]');if(!b)return;const m=missions.find(m=>m.id===b.dataset.claim);if(!m||s.claimed[m.id]||m.progress()<m.target)return;s.gold+=m.reward;s.earned+=m.reward;s.claimed[m.id]=true;save();render();toast('🎁 +'+fmt(m.reward)+' ouros!');};
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+b.dataset.tab));render();});
+const inviteURL='https://t.me/CryptoMiningEmpireGameBot?startapp';
+$('invite').onclick=()=>{const share='https://t.me/share/url?url='+encodeURIComponent(inviteURL)+'&text='+encodeURIComponent('⛏️ Venha jogar Crypto Mining Empire comigo!');if(tg?.openTelegramLink){tg.openTelegramLink(share)}else window.open(share,'_blank','noopener');};
+$('copyinvite').onclick=async()=>{try{await navigator.clipboard.writeText(inviteURL);toast('Link copiado!')}catch(e){prompt('Copie o link:',inviteURL)}};
+$('save').onclick=()=>{save();toast('💾 Progresso salvo!')};
+$('reset').onclick=()=>{if(confirm('Apagar o progresso deste navegador?')){s=fresh();save();render();toast('Progresso reiniciado.')}};
+const away=Math.max(0,Math.min(7200,(Date.now()-(Number(s.last)||Date.now()))/1000));if(away>3&&rate()>0){const gain=rate()*away;s.gold+=gain;s.earned+=gain;s.dailyEarned+=gain;toast('⏳ Mineração offline: +'+fmt(gain)+' ouro');}
+render();save();let last=Date.now();setInterval(()=>{const now=Date.now(),dt=Math.max(0,Math.min(3,(now-last)/1000));last=now;if(s.day!==today()){s.day=today();s.dailyClicks=0;s.dailyEarned=0;s.claimed={};}if(rate()>0)addGold(rate()*dt);},500);setInterval(save,5000);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
+})();
+</script></body></html>

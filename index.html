@@ -73,7 +73,7 @@ const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD
      if(response.ok&&result.success&&Number.isSafeInteger(result.telegram_id)){
        status.textContent='✅ Telegram verificado: '+String(result.first_name||'Jogador')+'. Seu progresso ainda é local nesta versão.';
      }else{
-       status.textContent='⚠️ Não foi possível validar o Telegram ('+response.status+'). Seu progresso continua apenas neste navegador.';
+       status.textContent='⚠️ Telegram ('+response.status+'): '+String(result.error||'Erro desconhecido')+'. Seu progresso continua neste navegador.';
      }
    }catch(e){
      status.textContent='⚠️ Sem conexão com o servidor de autenticação. Você pode jogar a demonstração local.';

@@ -58,7 +58,11 @@ const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD
  const API='https://qjzwtqrymfikhwjdwkmq.supabase.co/functions/v1/crypto-mining-api';
  let cloudReady=false, cloudBusy=false, dirty=false, loaded=false, revision=0;
  async function api(action, progress){
-   const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({initData:tg.initData,action,...(progress?{progress}:{})})});
+   const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),12000);
+    let response;
+    try{response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({initData:tg.initData,action,...(progress?{progress}:{})}),signal:controller.signal});}
+    finally{clearTimeout(timer);}
    const data=await response.json();if(!response.ok||!data.success)throw Error(data.error||'Falha na API');return data;
  }
  function normalized(value){

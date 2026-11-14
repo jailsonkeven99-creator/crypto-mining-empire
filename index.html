@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Mining Empire | Telegram BETA 0.6</title>
+<title>Crypto Mining Empire | Telegram BETA 0.6.1</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#080e1c;--card:#15223a;--line:#304461;--muted:#a7bad3;--gold:#ffc44c;--mint:#57e0b0}
@@ -29,7 +29,7 @@ button:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-
 footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:12px}.top{align-items:flex-start}.tabs button{font-size:13px;padding:10px}.mine{min-height:265px}}
 </style></head><body><main>
-<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.6</span></div>
+<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.6.1</span></div>
 <div class="note" id="authstatus" role="status" style="margin:0 0 14px">🔄 Verificando conexão com o Telegram...</div>
 <div class="stats">
 <div class="stat"><small>🪙 Ouro</small><strong id="gold">0</strong></div>
@@ -56,13 +56,9 @@ footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 const tg=window.Telegram?.WebApp;try{tg?.ready();tg?.expand()}catch(e){}
 const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD='crypto-mining-empire-beta-v1';
  const API='https://qjzwtqrymfikhwjdwkmq.supabase.co/functions/v1/crypto-mining-api';
- let cloudReady=false, cloudBusy=false, dirty=false, loaded=false, revision=0;
+ let cloudReady=false, cloudBusy=false, dirty=false, loaded=true, revision=0;
  async function api(action, progress){
-   const controller=new AbortController();
-    const timer=setTimeout(()=>controller.abort(),12000);
-    let response;
-    try{response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({initData:tg.initData,action,...(progress?{progress}:{})}),signal:controller.signal});}
-    finally{clearTimeout(timer);}
+   const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({initData:tg.initData,action,...(progress?{progress}:{})})});
    const data=await response.json();if(!response.ok||!data.success)throw Error(data.error||'Falha na API');return data;
  }
  function normalized(value){
@@ -76,14 +72,20 @@ const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD
  async function verifyTelegram(){
    const status=$('authstatus');
    if(!tg?.initData){loaded=true;status.textContent='ℹ️ Demonstração local: abra pelo Telegram para salvar online.';return;}
-   status.textContent='🔄 Carregando sua conta online...';
+   status.textContent='⛏️ Mineração ativa. Conectando à nuvem...';
+   const startRevision=revision;
    try{
-     const data=await api('load');
+     const data=await Promise.race([api('load'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Tempo de conexão excedido')),10000))]);
      const p=data.player;
      if(!p)throw Error('Jogador não encontrado');
      const state=p.state&&typeof p.state==='object'?p.state:{};
      const hasCloudProgress=Object.keys(state).length>0 || Number(p.earned)>0 || Number(p.level)>1 || Number(p.gold)>0;
      const hasLocalProgress=s.earned>0 || s.level>1 || s.gold>0 || Object.values(s.owned).some(Boolean);
+     if(revision!==startRevision){
+       cloudReady=true; loaded=true; render();
+       status.textContent='⛏️ Mineração ativa. Progresso local mantido; salvamento online pendente.';
+       return;
+     }
      if(hasCloudProgress){
        s=normalized({...state,gold:p.gold,level:p.level,xp:p.xp,crystals:p.crystals,earned:p.earned,owned:p.equipment||state.owned});
      }else if(hasLocalProgress && confirm('Encontramos seu progresso antigo neste navegador. Deseja enviar esse progresso para sua conta online?')){
@@ -108,6 +110,10 @@ const fmt=n=>Math.floor(n).toLocaleString('pt-BR');
 const power=()=>1+s.owned.pick;
 const rate=()=>s.owned.worker+6*s.owned.drill+30*s.owned.robot;
 const cost=i=>Math.ceil(i.base*Math.pow(i.mult,s.owned[i.id]));
+function saveLocal(){
+  try { s.last=Date.now(); localStorage.setItem(KEY,JSON.stringify(s)); }
+  catch(e){ console.warn('Salvamento local indisponível:',e); }
+}
 function save(){dirty=true;revision++;saveLocal();}
 async function cloudSave(){
  if(!cloudReady||cloudBusy||!dirty||!loaded)return;
@@ -147,6 +153,6 @@ $('copyinvite').onclick=async()=>{try{await navigator.clipboard.writeText(invite
 $('save').onclick=async()=>{if(!loaded)return;save();await cloudSave();toast(cloudReady&&!dirty?'☁️ Salvo online!':'💾 Salvo localmente; nuvem pendente.');};
 $('reset').onclick=()=>{if(!loaded)return;if(confirm('Reiniciar o progresso local e, se conectado, também o online?')){s=fresh();save();render();cloudSave();toast('Progresso reiniciado.')}};
 const away=Math.max(0,Math.min(7200,(Date.now()-(Number(s.last)||Date.now()))/1000));if(away>3&&rate()>0&&!tg?.initData){const gain=rate()*away;s.gold+=gain;s.earned+=gain;s.dailyEarned+=gain;toast('⏳ Mineração offline: +'+fmt(gain)+' ouro');}
-render();saveLocal();verifyTelegram();let last=Date.now();setInterval(()=>{const now=Date.now(),dt=Math.max(0,Math.min(3,(now-last)/1000));last=now;if(s.day!==today()){s.day=today();s.dailyClicks=0;s.dailyEarned=0;s.claimed={};}if(loaded&&rate()>0){addGold(rate()*dt);save();}},500);setInterval(()=>{if(loaded){saveLocal();cloudSave();}},5000);document.addEventListener('visibilitychange',()=>{if(document.hidden){saveLocal();cloudSave();}});
+render();saveLocal();verifyTelegram().catch(e=>{loaded=true;$('authstatus').textContent='⚠️ Conexão indisponível. Mineração local ativa.';});let last=Date.now();setInterval(()=>{const now=Date.now(),dt=Math.max(0,Math.min(3,(now-last)/1000));last=now;if(s.day!==today()){s.day=today();s.dailyClicks=0;s.dailyEarned=0;s.claimed={};}if(loaded&&rate()>0){addGold(rate()*dt);save();}},500);setInterval(()=>{if(loaded){saveLocal();cloudSave();}},5000);document.addEventListener('visibilitychange',()=>{if(document.hidden){saveLocal();cloudSave();}});
 })();
 </script></body></html>

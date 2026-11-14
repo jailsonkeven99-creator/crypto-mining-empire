@@ -104,6 +104,10 @@ const fmt=n=>Math.floor(n).toLocaleString('pt-BR');
 const power=()=>1+s.owned.pick;
 const rate=()=>s.owned.worker+6*s.owned.drill+30*s.owned.robot;
 const cost=i=>Math.ceil(i.base*Math.pow(i.mult,s.owned[i.id]));
+function saveLocal(){
+  try { s.last=Date.now(); localStorage.setItem(KEY,JSON.stringify(s)); }
+  catch(e) { console.warn('Falha ao salvar localmente',e); }
+}
 function save(){dirty=true;revision++;saveLocal();}
 async function cloudSave(){
  if(!cloudReady||cloudBusy||!dirty||!loaded)return;

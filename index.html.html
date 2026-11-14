@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Mining Empire | Telegram BETA 0.8</title>
+<title>Crypto Mining Empire | Telegram MEGA 1.0</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#080e1c;--card:#15223a;--line:#304461;--muted:#a7bad3;--gold:#ffc44c;--mint:#57e0b0}
@@ -29,7 +29,7 @@ button:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-
 footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:12px}.top{align-items:flex-start}.tabs button{font-size:13px;padding:10px}.mine{min-height:265px}}
 
-/* BETA 0.8 - interface premium neon / ouro */
+/* MEGA 1.0 - interface premium neon / ouro */
 :root{--bg:#060b17;--card:#13213a;--line:#35517b;--gold:#ffd15c;--mint:#5ef2c2}
 body{background:radial-gradient(ellipse at 50% -15%,#254c76 0%,#0b1630 36%,#060b17 75%);min-height:100vh}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:radial-gradient(#8ccaff 0.7px,transparent 0.7px);background-size:22px 22px}
@@ -66,7 +66,7 @@ h2{font-size:20px;letter-spacing:-.3px}
 footer{line-height:1.6;margin-top:24px}
 @media(max-width:720px){main{padding:10px 10px 76px}.top{padding:13px}.stat{min-height:94px;padding:13px}.stats{gap:9px}.tabs button{padding:12px 10px}.panel{padding:15px}.mine{min-height:285px}}
 
-/* BETA 0.8: cenário 2D animado, sem alterar dados de jogo */
+/* MEGA 1.0: cenário 2D animado, sem alterar dados de jogo */
 .mine{padding:0 10px 18px;min-height:410px;justify-content:flex-start;gap:10px;background:linear-gradient(180deg,#0b1830,#10243c);}
 .mine-world{height:265px;width:100%;position:relative;overflow:hidden;border-radius:14px 14px 10px 10px;background:radial-gradient(circle at 75% 12%,#234a74 0,#0c1c38 42%,#09142b 90%);isolation:isolate;}
 .mine-title{position:absolute;z-index:12;top:10px;left:10px;right:10px;font-size:11px;letter-spacing:.09em;font-weight:900;color:#d6efff;display:flex;justify-content:space-between;align-items:center;text-shadow:0 2px 6px #000}
@@ -100,18 +100,64 @@ footer{line-height:1.6;margin-top:24px}
 .mine>.ore{display:none}.mine>#mine{position:relative;z-index:15;min-width:85%;font-size:18px;box-shadow:0 5px 18px #ffba4a44}.mine>small{position:relative;z-index:15;text-align:center}
 @media(max-width:420px){.mine-world{height:245px}.mine{min-height:375px}.mining-machine{right:3%;transform:scale(.84);transform-origin:bottom right}.miner-character{left:10%;transform-origin:bottom left}.crystal-field{left:41%}.mine-title{font-size:10px}.live-dot{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.mine-world *{animation:none!important}}
+
+/* MEGA 1.0: interface mobile colorida, preservando ids e lógica */
+:root{color-scheme:light;--line:#70b9e9;--muted:#385d7a;--gold:#ffba2d}
+body{color:#163955;background:linear-gradient(180deg,#5bc1ff 0%,#a3e9ff 42%,#e4f8ff 100%);min-height:100vh}
+body:before{opacity:.2;background-image:radial-gradient(#fff 1.5px,transparent 1.5px);background-size:29px 29px}
+main{max-width:850px;padding:10px 10px 110px}
+.top{background:linear-gradient(145deg,#e9faff,#bcefff);border:2px solid #fff;box-shadow:0 8px 0 #3085c04a,0 15px 24px #24618c26}
+h1{color:#1264aa;text-shadow:0 2px #fff;font-size:clamp(23px,5vw,32px)}
+.top small,.muted,small{color:#426b88}.tag{background:#ffe59a;color:#794c05;border:2px solid #fff}
+#authstatus{background:linear-gradient(90deg,#d7ffed,#b3f3d8);color:#146344;border:2px solid #fff;border-left:5px solid #26c684;box-shadow:0 5px 0 #59a78d45}
+.stat,.panel{background:linear-gradient(155deg,#f7fdff,#d3edff);border:2px solid #fff;box-shadow:0 6px 0 #4795cb66,0 10px 20px #14649b24;color:#204461}
+.stat small{color:#3c7192}.stat strong{color:#e28c00;text-shadow:0 2px #fff}.stat:nth-child(2) strong{color:#00a899}.stat:nth-child(4) strong{color:#6a64d8}
+.tabs{position:sticky;bottom:0;z-index:40;background:#b8e9ffed;border:2px solid #fff;border-radius:18px;padding:8px 5px;margin:16px -4px 12px;box-shadow:0 4px 0 #458fbd66;overflow-x:auto}
+.tabs button{background:#f4fbff;color:#22608c;border:2px solid #8bc5ed;box-shadow:0 4px 0 #7db6d9;border-radius:13px;font-weight:850}
+.tabs button.active,button.primary{background:linear-gradient(#ffe17a,#ffad25);color:#704200;border:2px solid #fff;box-shadow:0 5px 0 #d78b1e,0 8px 15px #8b5c2030}
+button{background:#d7efff;color:#225a83;border:2px solid #7cb6db;font-weight:800}
+h2{color:#17629b}.pill{background:#c2f1ff;color:#18658c;border:1px solid #66b8d7}
+.note{background:#e0f7ff;color:#236181;border:1px solid #83c5e6}
+.mine{background:linear-gradient(180deg,#8bdaff,#d1f5ff);border:2px solid #70b5df;box-shadow:inset 0 0 30px #fff8}
+.mine-world{background:linear-gradient(180deg,#58bbf7,#9cddfa 65%,#8bd5dd);border:2px solid #ffffffcc;box-shadow:inset 0 0 25px #fff7}
+.world-stars{opacity:.55}.world-moon{background:#fff9bd;box-shadow:0 0 40px #fff6a9}
+.mountain-back{background:#5eafd2}.mountain-front{background:#2e91b4}
+.world-platform{background:repeating-linear-gradient(90deg,#8b684a 0 30px,#a77b4e 30px 33px);border-top:6px solid #64b782}
+.mine-title{color:#fff;text-shadow:0 2px 4px #24678b}.live-dot{color:#c3ffae}
+.machine-info{color:#fff}.mine>small{color:#326d92}
+.progress{background:#a4cde9}.progress div{background:linear-gradient(90deg,#29bbf2,#37df97)}
+.item{border-bottom:1px solid #9acbe6}.item b{color:#195c8d}.item p,.mission p{color:#47758d}
+.item button:not(:disabled),#dailyreward:not(:disabled){background:linear-gradient(#ffe17a,#ffb52d);color:#744400;border:2px solid #fff}
+footer{color:#376e94}.rank{border-color:#91c6e5}
+.mega-hud{display:flex;gap:8px;justify-content:space-between;align-items:center;margin:0 0 14px}
+.mega-hud .hud-label{font-weight:900;font-size:13px;color:#13618c}.sound-toggle{padding:8px 11px;background:#fff5ce;border-color:#fff}
+.world-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.area-card{padding:12px;border-radius:16px;border:2px solid #fff;background:linear-gradient(#e6faff,#a9e0fa);box-shadow:0 5px 0 #4c9fc66b;display:flex;flex-direction:column;gap:7px;min-width:0}
+.area-card.selected{outline:3px solid #f6b52e}.area-card.locked{background:linear-gradient(#e5e8f4,#b6c6db)}
+.area-art{font-size:38px;text-align:center;min-height:45px}.area-card b{font-size:13px}.area-card small{font-size:11px;line-height:1.3}.area-card button{padding:9px 5px;font-size:12px}
+.world-badge{position:absolute;top:36px;left:9px;z-index:15;background:#ffffffd9;color:#1b6594;padding:5px 9px;border-radius:99px;font-size:10px;font-weight:900}
+.world-machines{position:absolute;z-index:12;right:9px;bottom:10px;color:#fff;background:#0b4d76b8;border:1px solid #a4efff;border-radius:9px;padding:4px 7px;font-size:10px}
+.mine-world.area-ice{background:linear-gradient(180deg,#a8eaff,#e2fbff 80%)}.mine-world.area-ice .mountain{background:#80c7ed}
+.mine-world.area-volcano{background:linear-gradient(180deg,#722d57,#ef7d44)}.mine-world.area-volcano .mountain{background:#a6433e}.mine-world.area-volcano .crystal{filter:hue-rotate(150deg)}
+.mine-world.area-space{background:radial-gradient(circle at 70% 20%,#4434a3,#121d52 75%)}.mine-world.area-space .mountain{background:#303e85}
+.mine-world.area-ice .crystal{filter:hue-rotate(20deg)}.mine-world.area-space .crystal{filter:hue-rotate(70deg)}
+.mine-world.mega-hit .crystal-field{animation:mega-crack .3s ease-in-out}@keyframes mega-crack{50%{transform:scale(.88) rotate(5deg);filter:brightness(2)}}
+.mine-world .miner-arm-right{animation-duration:.65s}
+@media(max-width:420px){.stats{gap:8px}.stat{padding:10px;min-height:83px}.stat strong{font-size:25px}.tabs button{font-size:12px;padding:10px 8px}.world-map{gap:8px}.area-card{padding:9px}.mine-world{height:250px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style></head><body><main>
-<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.8</span></div>
+<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">MEGA 1.0</span></div>
 <div class="note" id="authstatus" role="status" style="margin:0 0 14px">🔄 Verificando conexão com o Telegram...</div>
+<div class="mega-hud"><span class="hud-label">🌟 MEGA EVOLUTION · AVENTURA DE MINERAÇÃO</span><button class="sound-toggle" id="soundtoggle" type="button">🔇 Som desligado</button></div>
 <div class="stats">
 <div class="stat"><small>🪙 Ouro</small><strong id="gold">0</strong></div>
 <div class="stat"><small>⚙️ Ouro/seg</small><strong id="rate">0</strong></div>
 <div class="stat"><small>👆 Por clique</small><strong id="power">1</strong></div>
 <div class="stat"><small>⭐ Nível</small><strong id="level">1</strong></div>
 </div>
-<div class="tabs" role="tablist"><button class="active" data-tab="mina">⛏️ Mina</button><button data-tab="missoes">🎯 Missões</button><button data-tab="amigos">👥 Amigos</button><button data-tab="ranking">🏆 Ranking</button></div>
+<div class="tabs" role="tablist"><button class="active" data-tab="mina">⛏️ Mina</button><button data-tab="missoes">🎯 Missões</button><button data-tab="amigos">👥 Amigos</button><button data-tab="ranking">🏆 Ranking</button><button data-tab="mapa">🗺️ Mundo</button></div>
 <section class="view active" id="view-mina"><div class="grid">
-<div class="stack"><div class="panel"><h2>💎 Sua mina</h2><div class="mine" id="minearea"><div class="mine-world" aria-label="Cenário animado de mineração">
+<div class="stack"><div class="panel"><h2>💎 Sua mina</h2><div class="mine" id="minearea"><div class="mine-world" id="worldscene" aria-label="Cenário animado de mineração"><div class="world-badge" id="areaname">💎 Mina de Cristais</div><div class="world-machines" id="machinecount">⚙️ 0 máquinas</div>
  <div class="world-stars"></div><div class="world-moon"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
  <div class="mine-title">⛏️ MINA DE CRISTAIS <span class="live-dot">● EM OPERAÇÃO</span></div>
  <div class="world-platform"></div>
@@ -124,12 +170,13 @@ footer{line-height:1.6;margin-top:24px}
 <div style="margin-top:13px" class="row"><b id="xptext">Experiência 0 / 20</b><span class="pill" id="crystal">💠 0 cristais</span></div><div class="progress"><div id="xpbar"></div></div></div></div>
 <div class="panel"><h2>🛒 Loja de melhorias</h2><div id="shop"></div></div>
 </div></section>
+<section class="view" id="view-mapa"><div class="panel"><h2>🗺️ Explore novos mundos</h2><p class="muted">Desbloqueie áreas usando ouro virtual. Seus equipamentos continuam funcionando em todas as minas.</p><div id="areas" class="world-map"></div><div class="note">✨ Áreas e cenários novos. Nesta versão, trocar de área não altera a velocidade de mineração.</div></div></section>
 <section class="view" id="view-missoes"><div class="panel"><h2>🎯 Missões diárias</h2><small>Renovadas a cada dia, no horário do seu dispositivo.</small><div class="note" id="dailybox"><b>🎁 Presente diário</b><p>Receba 200 ouros virtuais uma vez por dia.</p><button class="primary" id="dailyreward">Resgatar 200 🪙</button></div><div id="missions"></div><div class="note">As recompensas são apenas ouro virtual da BETA. Não podem ser sacadas.</div></div></section>
 <section class="view" id="view-amigos"><div class="panel"><h2>👥 Convide amigos</h2><p class="muted">Compartilhe seu jogo com amigos no Telegram.</p><button class="primary" id="invite">📨 Compartilhar convite</button><button id="copyinvite">🔗 Copiar link</button><p class="muted" id="refinfo">Compartilhe seu link pessoal de convite.</p><div class="note" id="inviteinfo">Convites personalizados ativos. A contagem de amigos e bônus por indicação dependem de validação no servidor e ainda não estão habilitados.</div></div></section>
 <section class="view" id="view-ranking"><div class="panel"><h2>🏆 Ranking BETA</h2><p class="muted">Ranking online experimental por nível e ouro. Os valores ainda não são protegidos contra trapaças.</p><button id="refreshRanking">🔄 Atualizar ranking</button><div id="ranks"></div></div></section>
 <div class="row" style="margin-top:15px"><button id="save">💾 Salvar</button><button id="reset">🗑️ Reiniciar progresso</button></div>
 <div id="toast" class="note" role="status" style="display:none"></div>
-<footer>Crypto Mining Empire • BETA 0.8 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
+<footer>Crypto Mining Empire • MEGA 1.0 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
 </main>
 <script>
 (()=>{
@@ -190,7 +237,7 @@ const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD
    }catch(e){loaded=true;status.textContent='⚠️ Sem confirmação da nuvem: '+String(e.message||'erro')+'. Progresso local mantido.';}
  }
 const today=()=>new Date().toLocaleDateString('en-CA');
-const fresh=()=>({gold:0,xp:0,level:1,crystals:0,clicks:0,earned:0,owned:{pick:0,worker:0,drill:0,robot:0,laser:0,quantum:0},dailyRewardDay:"",day:today(),dailyClicks:0,dailyEarned:0,claimed:{},last:Date.now()});
+const fresh=()=>({gold:0,xp:0,level:1,crystals:0,clicks:0,earned:0,owned:{pick:0,worker:0,drill:0,robot:0,laser:0,quantum:0},dailyRewardDay:"",day:today(),dailyClicks:0,dailyEarned:0,claimed:{},unlockedAreas:["crystal"],activeArea:"crystal",last:Date.now()});
 const items=[{id:'pick',name:'⛏️ Picareta reforçada',base:15,mult:1.55,desc:'+1 ouro por clique'},{id:'worker',name:'👷 Minerador automático',base:35,mult:1.6,desc:'+1 ouro por segundo'},{id:'drill',name:'⚙️ Broca industrial',base:220,mult:1.65,desc:'+6 ouro por segundo'},{id:'robot',name:'🤖 Robô minerador',base:1400,mult:1.7,desc:'+30 ouro por segundo'},{id:'laser',name:'🔦 Laser de mineração',base:5500,mult:1.75,desc:'+120 ouro por segundo'},{id:'quantum',name:'⚡ Escavadora quântica',base:25000,mult:1.85,desc:'+600 ouro por segundo'}];
 let s=fresh();let previous=null;
 try{previous=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem(OLD)||'null')}catch(e){}
@@ -228,17 +275,48 @@ function escapeHTML(str){return str.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt
 let toastTimeout;function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').style.display='none',3200)}
 function addGold(amount,manual=false){s.gold+=amount;s.earned+=amount;s.dailyEarned+=amount;if(manual){s.clicks++;s.dailyClicks++;s.xp+=2;while(s.xp>=s.level*20){s.xp-=s.level*20;s.level++;s.crystals++;toast('⭐ Subiu para o nível '+s.level+'! +1 cristal');}}render();}
 const missions=[{id:'tap',name:'⛏️ Minerador dedicado',desc:'Clique 30 vezes hoje',target:30,progress:()=>s.dailyClicks,reward:100},{id:'gold',name:'🪙 Caça ao ouro',desc:'Produza 500 ouros hoje',target:500,progress:()=>s.dailyEarned,reward:150},{id:'level',name:'⭐ Evolução',desc:'Alcance o nível 5',target:5,progress:()=>s.level,reward:250}];
+
+const areas=[
+ {id:'crystal',name:'Mina de Cristais',emoji:'💎',cost:0,level:1,css:'',desc:'Seu primeiro mundo brilhante'},
+ {id:'ice',name:'Caverna de Gelo',emoji:'❄️',cost:15000,level:5,css:'area-ice',desc:'Cristais congelados e montanhas geladas'},
+ {id:'volcano',name:'Vulcão de Ouro',emoji:'🌋',cost:75000,level:9,css:'area-volcano',desc:'Lava, rochas e cristais flamejantes'},
+ {id:'space',name:'Mina Espacial',emoji:'🪐',cost:250000,level:12,css:'area-space',desc:'Mineração entre as estrelas'}
+];
+let soundEnabled=false,audioCtx=null;
+function sound(kind){
+ if(!soundEnabled)return;
+ try{audioCtx ||= new (window.AudioContext||window.webkitAudioContext)();
+ const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),t=audioCtx.currentTime;
+ osc.type=kind==='buy'?'triangle':'sine';osc.frequency.setValueAtTime(kind==='buy'?420:680,t);osc.frequency.exponentialRampToValueAtTime(kind==='buy'?800:240,t+.13);
+ gain.gain.setValueAtTime(.045,t);gain.gain.exponentialRampToValueAtTime(.001,t+.15);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(t);osc.stop(t+.16);
+ }catch(e){}
+}
+$('soundtoggle').onclick=()=>{soundEnabled=!soundEnabled;$('soundtoggle').textContent=soundEnabled?'🔊 Som ligado':'🔇 Som desligado';if(soundEnabled)sound('buy')};
+function renderWorld(){
+ const area=areas.find(a=>a.id===s.activeArea)||areas[0],world=$('worldscene');
+ world.classList.remove('area-ice','area-volcano','area-space');if(area.css)world.classList.add(area.css);
+ $('areaname').textContent=area.emoji+' '+area.name;
+ const machines=s.owned.worker+s.owned.drill+s.owned.robot+s.owned.laser+s.owned.quantum;
+ $('machinecount').textContent='⚙️ '+fmt(machines)+' máquinas';
+ $('areas').innerHTML=areas.map(a=>{const unlocked=s.unlockedAreas.includes(a.id),selected=s.activeArea===a.id;
+ return `<div class="area-card ${selected?'selected':''} ${unlocked?'':'locked'}"><div class="area-art">${a.emoji}</div><b>${a.name}</b><small>${a.desc}</small><small>${unlocked?'✅ Desbloqueada':'🔒 Nível '+a.level+' · '+fmt(a.cost)+' 🪙'}</small><button data-area="${a.id}" ${selected||(!unlocked&&(s.level<a.level||s.gold<a.cost))?'disabled':''}>${selected?'📍 Explorando':unlocked?'Explorar':'Desbloquear'}</button></div>`}).join('');
+}
+$('areas').onclick=e=>{const b=e.target.closest('[data-area]');if(!b)return;const a=areas.find(a=>a.id===b.dataset.area);if(!a)return;
+ if(!s.unlockedAreas.includes(a.id)){if(s.level<a.level||s.gold<a.cost)return;s.gold-=a.cost;s.unlockedAreas.push(a.id);toast('🗺️ '+a.name+' desbloqueada!');}
+ s.activeArea=a.id;save();render();sound('buy');};
+
 function render(){
 $('gold').textContent=fmt(s.gold);$('rate').textContent=fmt(rate());$('power').textContent=fmt(power());$('level').textContent=fmt(s.level);$('mine').textContent='⛏️ MINERAR +'+fmt(power());$('crystal').textContent='💠 '+fmt(s.crystals)+' cristais';$('xptext').textContent='Experiência '+fmt(s.xp)+' / '+fmt(s.level*20);$('xpbar').style.width=Math.min(100,s.xp/(s.level*20)*100)+'%';
 $('shop').innerHTML=items.map(i=>`<div class="item row"><div><b>${i.name}</b><p>${i.desc} · Possui ${s.owned[i.id]}</p><span class="pill">🪙 ${fmt(cost(i))}</span></div><button data-buy="${i.id}" ${s.gold<cost(i)?'disabled':''}>Comprar</button></div>`).join('');
 $('dailyreward').disabled=s.dailyRewardDay===today();$('dailyreward').textContent=s.dailyRewardDay===today()?'✅ Presente recebido hoje':'🎁 Resgatar 200 🪙';
 $('missions').innerHTML=missions.map(m=>{const p=Math.min(m.target,m.progress());return `<div class="mission"><div style="flex:1"><b>${m.name}</b><p>${m.desc} · ${fmt(p)}/${fmt(m.target)} · Prêmio: ${fmt(m.reward)} ouros</p><div class="progress"><div style="width:${p/m.target*100}%"></div></div></div><button data-claim="${m.id}" ${s.claimed[m.id]||p<m.target?'disabled':''}>${s.claimed[m.id]?'Feito':'Resgatar'}</button></div>`}).join('');
-if(!cloudReady)$('ranks').innerHTML=`<div class="rank"><b>🥇 Você (neste dispositivo)</b><b>${fmt(s.earned)} 🪙</b></div><div class="note">Ainda não existem posições de outros jogadores nesta versão.</div>`;
+renderWorld();
+ if(!cloudReady)$('ranks').innerHTML=`<div class="rank"><b>🥇 Você (neste dispositivo)</b><b>${fmt(s.earned)} 🪙</b></div><div class="note">Ainda não existem posições de outros jogadores nesta versão.</div>`;
 }
 $('dailyreward').onclick=()=>{if(s.dailyRewardDay===today())return;s.dailyRewardDay=today();s.gold+=200;s.earned+=200;save();render();toast('🎁 Presente diário: +200 ouros!');};
 $('refreshRanking').onclick=async()=>{if(!cloudReady){toast('Abra pelo Telegram para consultar o ranking online.');return;}await loadRanking();toast('Ranking atualizado.');};
-$('mine').onclick=()=>{if(!loaded)return;addGold(power(),true);const ore=$('ore');ore.classList.add('hit');setTimeout(()=>ore.classList.remove('hit'),140);const a=document.createElement('span');a.className='spark';a.textContent='+'+fmt(power());a.style.left=(42+Math.random()*17)+'%';a.style.top='45%';$('minearea').append(a);setTimeout(()=>a.remove(),750);save();};
-$('shop').onclick=e=>{if(!loaded)return;const b=e.target.closest('[data-buy]');if(!b)return;const i=items.find(i=>i.id===b.dataset.buy);if(!i||s.gold<cost(i))return;s.gold-=cost(i);s.owned[i.id]++;save();render();toast('Melhoria comprada!');};
+$('mine').onclick=()=>{if(!loaded)return;addGold(power(),true);sound('hit');const world=$('worldscene');world.classList.remove('mega-hit');void world.offsetWidth;world.classList.add('mega-hit');const ore=$('ore');ore.classList.add('hit');setTimeout(()=>ore.classList.remove('hit'),140);const a=document.createElement('span');a.className='spark';a.textContent='+'+fmt(power());a.style.left=(42+Math.random()*17)+'%';a.style.top='45%';$('minearea').append(a);setTimeout(()=>a.remove(),750);save();};
+$('shop').onclick=e=>{if(!loaded)return;const b=e.target.closest('[data-buy]');if(!b)return;const i=items.find(i=>i.id===b.dataset.buy);if(!i||s.gold<cost(i))return;s.gold-=cost(i);s.owned[i.id]++;save();render();sound('buy');toast('Melhoria comprada!');};
 $('missions').onclick=e=>{if(!loaded)return;const b=e.target.closest('[data-claim]');if(!b)return;const m=missions.find(m=>m.id===b.dataset.claim);if(!m||s.claimed[m.id]||m.progress()<m.target)return;s.gold+=m.reward;s.earned+=m.reward;s.claimed[m.id]=true;save();render();toast('🎁 +'+fmt(m.reward)+' ouros!');};
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+b.dataset.tab));render();});
 const myId=tg?.initDataUnsafe?.user?.id;

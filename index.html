@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Mining Empire | Telegram MEGA 1.1</title>
+<title>Crypto Mining Empire | Telegram MEGA 1.2</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#080e1c;--card:#15223a;--line:#304461;--muted:#a7bad3;--gold:#ffc44c;--mint:#57e0b0}
@@ -29,7 +29,7 @@ button:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-
 footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:12px}.top{align-items:flex-start}.tabs button{font-size:13px;padding:10px}.mine{min-height:265px}}
 
-/* MEGA 1.1 - interface premium neon / ouro */
+/* MEGA 1.2 - interface premium neon / ouro */
 :root{--bg:#060b17;--card:#13213a;--line:#35517b;--gold:#ffd15c;--mint:#5ef2c2}
 body{background:radial-gradient(ellipse at 50% -15%,#254c76 0%,#0b1630 36%,#060b17 75%);min-height:100vh}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:radial-gradient(#8ccaff 0.7px,transparent 0.7px);background-size:22px 22px}
@@ -66,7 +66,7 @@ h2{font-size:20px;letter-spacing:-.3px}
 footer{line-height:1.6;margin-top:24px}
 @media(max-width:720px){main{padding:10px 10px 76px}.top{padding:13px}.stat{min-height:94px;padding:13px}.stats{gap:9px}.tabs button{padding:12px 10px}.panel{padding:15px}.mine{min-height:285px}}
 
-/* MEGA 1.1: cenário 2D animado, sem alterar dados de jogo */
+/* MEGA 1.2: cenário 2D animado, sem alterar dados de jogo */
 .mine{padding:0 10px 18px;min-height:410px;justify-content:flex-start;gap:10px;background:linear-gradient(180deg,#0b1830,#10243c);}
 .mine-world{height:265px;width:100%;position:relative;overflow:hidden;border-radius:14px 14px 10px 10px;background:radial-gradient(circle at 75% 12%,#234a74 0,#0c1c38 42%,#09142b 90%);isolation:isolate;}
 .mine-title{position:absolute;z-index:12;top:10px;left:10px;right:10px;font-size:11px;letter-spacing:.09em;font-weight:900;color:#d6efff;display:flex;justify-content:space-between;align-items:center;text-shadow:0 2px 6px #000}
@@ -101,7 +101,7 @@ footer{line-height:1.6;margin-top:24px}
 @media(max-width:420px){.mine-world{height:245px}.mine{min-height:375px}.mining-machine{right:3%;transform:scale(.84);transform-origin:bottom right}.miner-character{left:10%;transform-origin:bottom left}.crystal-field{left:41%}.mine-title{font-size:10px}.live-dot{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.mine-world *{animation:none!important}}
 
-/* MEGA 1.1: interface mobile colorida, preservando ids e lógica */
+/* MEGA 1.2: interface mobile colorida, preservando ids e lógica */
 :root{color-scheme:light;--line:#70b9e9;--muted:#385d7a;--gold:#ffba2d}
 body{color:#163955;background:linear-gradient(180deg,#5bc1ff 0%,#a3e9ff 42%,#e4f8ff 100%);min-height:100vh}
 body:before{opacity:.2;background-image:radial-gradient(#fff 1.5px,transparent 1.5px);background-size:29px 29px}
@@ -146,14 +146,26 @@ footer{color:#376e94}.rank{border-color:#91c6e5}
 @media(max-width:420px){.stats{gap:8px}.stat{padding:10px;min-height:83px}.stat strong{font-size:25px}.tabs button{font-size:12px;padding:10px 8px}.world-map{gap:8px}.area-card{padding:9px}.mine-world{height:250px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-/* MEGA 1.1 - central social */
+/* MEGA 1.2 - central social */
 .social-banner{background:linear-gradient(110deg,#1556a3,#3288ce);color:white;padding:14px;border-radius:16px;margin:10px 0 16px;font-weight:850;box-shadow:0 5px 0 #0e4a83}
 .social-banner small{display:block;color:#e3f5ff;font-weight:550;margin-top:5px;line-height:1.45}
 #ranks .rank{background:#ffffffb8;color:#184675;border:1px solid #8dcaf2;border-radius:12px;margin:8px 0;gap:12px;align-items:center;flex-wrap:wrap}
 #ranks .rank b:last-child{color:#8b5300}
 #view-amigos .panel button{margin:5px 5px 5px 0}
+
+/* MEGA 1.2 - menu inferior e vitrines seguras */
+main{padding-bottom:178px}
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,850px);margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:9px 9px calc(9px + env(safe-area-inset-bottom));border-radius:20px 20px 0 0;overflow:visible;box-shadow:0 -8px 30px #175c9950;background:#d7f4fffa;z-index:50}
+.tabs button{min-width:0;white-space:normal;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px!important;padding:7px 3px!important;line-height:1.1;min-height:52px}
+.tabs button .nav-icon{font-size:20px;line-height:1.1}
+.premium-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:14px}
+.premium-card{background:linear-gradient(#ffffff,#d3efff);border:2px solid #fff;border-radius:18px;padding:16px;text-align:center;box-shadow:0 5px 0 #58a2cb66}
+.premium-card .premium-art{font-size:49px}.premium-card h3{margin:8px 0;color:#17629b}.premium-card p{font-size:13px;color:#426b88;min-height:35px}
+.premium-price{font-size:23px;font-weight:900;color:#ab6b00;margin:9px 0}
+.premium-card button{width:100%}.safety-info{line-height:1.6}
+@media(max-width:420px){.tabs{gap:4px;padding:7px 5px calc(7px + env(safe-area-inset-bottom))}.tabs button{font-size:10px!important;min-height:48px}.tabs button .nav-icon{font-size:18px}}
 </style></head><body><main>
-<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">MEGA 1.1</span></div>
+<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Loja Premium em demonstração</small></div><span class="tag">MEGA 1.2</span></div>
 <div class="note" id="authstatus" role="status" style="margin:0 0 14px">🔄 Verificando conexão com o Telegram...</div>
 <div class="mega-hud"><span class="hud-label">🌟 MEGA EVOLUTION · AVENTURA DE MINERAÇÃO</span><button class="sound-toggle" id="soundtoggle" type="button">🔇 Som desligado</button></div>
 <div class="stats">
@@ -162,7 +174,7 @@ footer{color:#376e94}.rank{border-color:#91c6e5}
 <div class="stat"><small>👆 Por clique</small><strong id="power">1</strong></div>
 <div class="stat"><small>⭐ Nível</small><strong id="level">1</strong></div>
 </div>
-<div class="tabs" role="tablist"><button class="active" data-tab="mina">⛏️ Mina</button><button data-tab="missoes">🎯 Missões</button><button data-tab="amigos">👥 Amigos</button><button data-tab="ranking">🏆 Ranking</button><button data-tab="mapa">🗺️ Mundo</button></div>
+<nav class="tabs" role="tablist" aria-label="Navegação do jogo"><button class="active" data-tab="mina"><span class="nav-icon">⛏️</span>Mina</button><button data-tab="loja"><span class="nav-icon">⭐</span>Loja</button><button data-tab="missoes"><span class="nav-icon">🎯</span>Missões</button><button data-tab="amigos"><span class="nav-icon">👥</span>Amigos</button><button data-tab="ranking"><span class="nav-icon">🏆</span>Ranking</button><button data-tab="mapa"><span class="nav-icon">🗺️</span>Mundo</button><button data-tab="ton"><span class="nav-icon">💎</span>TON</button></nav>
 <section class="view active" id="view-mina"><div class="grid">
 <div class="stack"><div class="panel"><h2>💎 Sua mina</h2><div class="mine" id="minearea"><div class="mine-world" id="worldscene" aria-label="Cenário animado de mineração"><div class="world-badge" id="areaname">💎 Mina de Cristais</div><div class="world-machines" id="machinecount">⚙️ 0 máquinas</div>
  <div class="world-stars"></div><div class="world-moon"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
@@ -177,13 +189,15 @@ footer{color:#376e94}.rank{border-color:#91c6e5}
 <div style="margin-top:13px" class="row"><b id="xptext">Experiência 0 / 20</b><span class="pill" id="crystal">💠 0 cristais</span></div><div class="progress"><div id="xpbar"></div></div></div></div>
 <div class="panel"><h2>🛒 Loja de melhorias</h2><div id="shop"></div></div>
 </div></section>
+<section class="view" id="view-loja"><div class="panel"><h2>⭐ Loja Premium</h2><p class="muted">Máquinas especiais para aumentar apenas a produção de ouro virtual. Valores sugeridos para uma futura loja com Telegram Stars.</p><div class="premium-grid"><article class="premium-card"><div class="premium-art">🥉⚙️</div><h3>Mineradora Bronze</h3><p>+100 ouro virtual por segundo</p><div class="premium-price">25 ⭐ Stars</div><button type="button" data-premium="bronze">🔒 Em breve</button></article><article class="premium-card"><div class="premium-art">🥈⚙️</div><h3>Mineradora Prata</h3><p>+250 ouro virtual por segundo</p><div class="premium-price">50 ⭐ Stars</div><button type="button" data-premium="prata">🔒 Em breve</button></article><article class="premium-card"><div class="premium-art">🥇⚙️</div><h3>Mineradora Ouro</h3><p>+600 ouro virtual por segundo</p><div class="premium-price">100 ⭐ Stars</div><button type="button" data-premium="ouro">🔒 Em breve</button></article></div><div class="note safety-info">🛡️ <b>Loja em demonstração:</b> nenhum pagamento é solicitado ou processado. As máquinas premium não são entregues nesta versão. A compra só será habilitada após integração e verificação de pagamento no servidor. Nenhuma máquina garante recompensas TON ou retorno financeiro.</div></div></section>
+<section class="view" id="view-ton"><div class="panel"><h2>💎 Central de Recompensas TON</h2><div class="social-banner">🏅 Eventos e torneios<small>Pequenas frações de TON poderão ser oferecidas futuramente, com regras e orçamento definidos.</small></div><div class="stats"><div class="stat"><small>💎 TON disponível</small><strong>0</strong></div><div class="stat"><small>🎁 Recompensas ativas</small><strong>0</strong></div></div><div class="note safety-info">🔒 <b>Saques desativados.</b> Esta área é apenas uma prévia. Ouro virtual não pode ser convertido em TON. Não há carteira conectada, prêmios ativos ou promessa de pagamento. Antes de ativar recompensas reais, será necessário validar a mineração no servidor, criar regras contra fraudes e estabelecer limites financeiros.</div><button type="button" id="toninfo">ℹ️ Como vai funcionar?</button></div></section>
 <section class="view" id="view-mapa"><div class="panel"><h2>🗺️ Explore novos mundos</h2><p class="muted">Desbloqueie áreas usando ouro virtual. Seus equipamentos continuam funcionando em todas as minas.</p><div id="areas" class="world-map"></div><div class="note">✨ Áreas e cenários novos. Nesta versão, trocar de área não altera a velocidade de mineração.</div></div></section>
 <section class="view" id="view-missoes"><div class="panel"><h2>🎯 Missões diárias</h2><small>Renovadas a cada dia, no horário do seu dispositivo.</small><div class="note" id="dailybox"><b>🎁 Presente diário</b><p>Receba 200 ouros virtuais uma vez por dia.</p><button class="primary" id="dailyreward">Resgatar 200 🪙</button></div><div id="missions"></div><div class="note">As recompensas são apenas ouro virtual da BETA. Não podem ser sacadas.</div></div></section>
 <section class="view" id="view-amigos"><div class="panel"><h2>👥 Central de amigos</h2><div class="social-banner">🤝 Convide seus amigos para minerar!<small>Convites são compartilháveis; bônus aguardam validação no servidor.</small></div><p class="muted">Compartilhe seu jogo com amigos no Telegram.</p><button class="primary" id="invite">📨 Compartilhar convite</button><button id="copyinvite">🔗 Copiar link</button><p class="muted" id="refinfo">Compartilhe seu link pessoal de convite.</p><div class="note" id="inviteinfo">Convites personalizados ativos. A contagem de amigos e bônus por indicação dependem de validação no servidor e ainda não estão habilitados.</div></div></section>
 <section class="view" id="view-ranking"><div class="panel"><h2>🏆 Ranking global</h2><div class="social-banner">🌍 Compita com outros mineradores<small>Classificação experimental consultada no Supabase.</small></div><p class="muted">Ranking online experimental por nível e ouro. Os valores ainda não são protegidos contra trapaças.</p><button id="refreshRanking">🔄 Atualizar ranking</button><div id="ranks" aria-live="polite"></div><div class="note">⚔️ Torneios semanais e recompensas por indicação estão em desenvolvimento. Ainda não distribuem prêmios.</div></div></section>
 <div class="row" style="margin-top:15px"><button id="save">💾 Salvar</button><button id="reset">🗑️ Reiniciar progresso</button></div>
 <div id="toast" class="note" role="status" style="display:none"></div>
-<footer>Crypto Mining Empire • MEGA 1.1 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
+<footer>Crypto Mining Empire • MEGA 1.2 • Loja Stars em demonstração • TON sem saques ativos • Salvamento local e online experimental • Convites sem bônus automático</footer>
 </main>
 <script>
 (()=>{
@@ -299,7 +313,9 @@ function sound(kind){
  gain.gain.setValueAtTime(.045,t);gain.gain.exponentialRampToValueAtTime(.001,t+.15);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(t);osc.stop(t+.16);
  }catch(e){}
 }
-$('soundtoggle').onclick=()=>{soundEnabled=!soundEnabled;$('soundtoggle').textContent=soundEnabled?'🔊 Som ligado':'🔇 Som desligado';if(soundEnabled)sound('buy')};
+document.querySelectorAll('[data-premium]').forEach(b=>b.addEventListener('click',()=>toast('⭐ Loja demonstrativa: pagamentos ainda não estão disponíveis.')));
+ $('toninfo').onclick=()=>toast('💎 Recompensas TON ainda não estão ativas.');
+ $('soundtoggle').onclick=()=>{soundEnabled=!soundEnabled;$('soundtoggle').textContent=soundEnabled?'🔊 Som ligado':'🔇 Som desligado';if(soundEnabled)sound('buy')};
 function renderWorld(){
  const area=areas.find(a=>a.id===s.activeArea)||areas[0],world=$('worldscene');
  world.classList.remove('area-ice','area-volcano','area-space');if(area.css)world.classList.add(area.css);

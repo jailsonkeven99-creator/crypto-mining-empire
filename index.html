@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Mining Empire | Telegram BETA 0.7.2</title>
+<title>Crypto Mining Empire | Telegram BETA 0.8</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#080e1c;--card:#15223a;--line:#304461;--muted:#a7bad3;--gold:#ffc44c;--mint:#57e0b0}
@@ -29,7 +29,7 @@ button:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-
 footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:12px}.top{align-items:flex-start}.tabs button{font-size:13px;padding:10px}.mine{min-height:265px}}
 
-/* BETA 0.7.2 - interface premium neon / ouro */
+/* BETA 0.8 - interface premium neon / ouro */
 :root{--bg:#060b17;--card:#13213a;--line:#35517b;--gold:#ffd15c;--mint:#5ef2c2}
 body{background:radial-gradient(ellipse at 50% -15%,#254c76 0%,#0b1630 36%,#060b17 75%);min-height:100vh}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:radial-gradient(#8ccaff 0.7px,transparent 0.7px);background-size:22px 22px}
@@ -65,8 +65,43 @@ h2{font-size:20px;letter-spacing:-.3px}
 #toast{border-left:4px solid #ffd15c}
 footer{line-height:1.6;margin-top:24px}
 @media(max-width:720px){main{padding:10px 10px 76px}.top{padding:13px}.stat{min-height:94px;padding:13px}.stats{gap:9px}.tabs button{padding:12px 10px}.panel{padding:15px}.mine{min-height:285px}}
+
+/* BETA 0.8: cenário 2D animado, sem alterar dados de jogo */
+.mine{padding:0 10px 18px;min-height:410px;justify-content:flex-start;gap:10px;background:linear-gradient(180deg,#0b1830,#10243c);}
+.mine-world{height:265px;width:100%;position:relative;overflow:hidden;border-radius:14px 14px 10px 10px;background:radial-gradient(circle at 75% 12%,#234a74 0,#0c1c38 42%,#09142b 90%);isolation:isolate;}
+.mine-title{position:absolute;z-index:12;top:10px;left:10px;right:10px;font-size:11px;letter-spacing:.09em;font-weight:900;color:#d6efff;display:flex;justify-content:space-between;align-items:center;text-shadow:0 2px 6px #000}
+.live-dot{color:#5df1ba;font-size:9px;letter-spacing:0;animation:live 1.5s infinite}
+@keyframes live{50%{opacity:.5}}
+.world-stars{position:absolute;inset:0;background-image:radial-gradient(#d7f4ff 1px,transparent 1.5px);background-size:35px 30px;opacity:.24}
+.world-moon{position:absolute;width:76px;height:76px;right:20px;top:25px;border-radius:50%;background:radial-gradient(circle,#62d9ff33,#3d9be900 70%);box-shadow:0 0 45px #2bc8ff44}
+.mountain{position:absolute;bottom:45px;width:120%;height:135px;left:-10%;clip-path:polygon(0 100%,0 65%,15% 34%,25% 70%,40% 18%,56% 72%,70% 28%,85% 65%,100% 35%,100% 100%)}
+.mountain-back{background:#173a58;opacity:.9;transform:translateY(-12px)}.mountain-front{background:#102c46;transform:scaleX(-1)}
+.world-platform{position:absolute;bottom:0;height:56px;left:0;right:0;background:repeating-linear-gradient(90deg,#142d3c 0 30px,#1a3745 30px 33px);border-top:5px solid #3d6d78;box-shadow:0 -10px 25px #24d7e122}
+.miner-character{position:absolute;z-index:7;left:18%;bottom:47px;width:80px;height:130px;filter:drop-shadow(0 5px 6px #0009);animation:miner-bob .8s ease-in-out infinite alternate}
+@keyframes miner-bob{to{transform:translateY(2px)}}
+.miner-hat{position:absolute;top:1px;left:14px;width:54px;height:27px;border-radius:28px 28px 5px 5px;background:linear-gradient(#ffc954,#dd8d27);border:3px solid #704c25;z-index:4}.miner-hat:after{content:'';position:absolute;bottom:-5px;left:-7px;width:63px;height:9px;border-radius:8px;background:#f4aa3e}.miner-hat span{position:absolute;top:3px;left:19px;color:#fff9b7}
+.miner-head{position:absolute;top:23px;left:19px;width:44px;height:41px;border-radius:13px 13px 17px 17px;background:#e5a46f;border:3px solid #7a4d37;z-index:3;display:flex;align-items:center;justify-content:space-evenly}.miner-head i{width:5px;height:6px;background:#292c39;border-radius:50%}
+.miner-body{position:absolute;top:59px;left:15px;width:52px;height:49px;border:3px solid #193a60;border-radius:11px;background:linear-gradient(100deg,#4e9cce,#23618e);z-index:2}.miner-body:after{content:'◆';position:absolute;left:17px;top:12px;color:#a7f7ff}
+.miner-arm{position:absolute;top:66px;width:17px;height:44px;border-radius:12px;background:#d99b65;border:3px solid #6d4b38;transform-origin:top center}.miner-arm-left{left:3px;transform:rotate(17deg)}.miner-arm-right{right:0;z-index:4;animation:pick-swing .75s ease-in-out infinite alternate}.miner-pick{position:absolute;font-size:32px;top:-27px;left:-13px;color:#d8faff;filter:drop-shadow(0 2px 1px #000)}
+@keyframes pick-swing{from{transform:rotate(-28deg)}to{transform:rotate(35deg)}}
+.miner-leg{position:absolute;top:100px;width:18px;height:29px;border:3px solid #192d4c;border-radius:4px 4px 8px 8px;background:#395d82}.leg-left{left:21px}.leg-right{left:45px}
+.crystal-field{position:absolute;z-index:5;bottom:42px;left:43%;height:95px;width:100px;filter:drop-shadow(0 0 14px #1fe4ff77);animation:crystal-glow 2s ease-in-out infinite alternate}
+@keyframes crystal-glow{to{filter:drop-shadow(0 0 23px #3ef9ffbb)}}
+.crystal{position:absolute;bottom:0;width:32px;height:75px;clip-path:polygon(50% 0,100% 27%,100% 80%,50% 100%,0 80%,0 27%);background:linear-gradient(100deg,#1476b4 0 45%,#3de3ff 46% 68%,#a2fbff 69%);border-radius:3px}
+.c1{left:34px;height:88px}.c2{left:5px;height:62px;transform:rotate(-19deg)}.c3{left:64px;height:56px;transform:rotate(22deg)}.c4{left:18px;height:37px}.c5{left:75px;height:35px}
+.mining-machine{position:absolute;z-index:6;bottom:46px;right:5%;height:110px;width:85px;border-radius:12px 12px 6px 6px;border:4px solid #456c85;background:linear-gradient(125deg,#324d6c,#14263d);box-shadow:inset 0 0 12px #61bfff22,0 6px 10px #0009}
+.machine-lights{position:absolute;top:8px;left:9px;display:flex;gap:5px}.machine-lights b{width:7px;height:7px;border-radius:50%;background:#55f8b3;box-shadow:0 0 8px #55f8b3;animation:live 1s infinite}.machine-lights b:nth-child(2){animation-delay:.3s}.machine-lights b:nth-child(3){animation-delay:.6s}
+.machine-screen{position:absolute;top:27px;left:12px;width:52px;height:30px;background:#0b354b;border:2px solid #43b7dc;border-radius:4px;text-align:center;line-height:25px;color:#a5ffce}
+.machine-gear{position:absolute;bottom:7px;left:25px;font-size:29px;color:#b9d3df;animation:gear-spin 3s linear infinite}@keyframes gear-spin{to{transform:rotate(360deg)}}
+.machine-foot{position:absolute;bottom:-11px;left:-7px;width:93px;height:12px;background:#35586a;border-radius:5px}
+.world-dust{position:absolute;z-index:8;color:#88f6ff;animation:dust 2s infinite}.dust1{left:46%;top:37%;font-size:25px}.dust2{left:58%;top:46%;animation-delay:.7s}.dust3{left:40%;top:59%;animation-delay:1.2s}
+@keyframes dust{0%,100%{opacity:0;transform:translateY(8px) scale(.7)}50%{opacity:1;transform:translateY(-13px) scale(1.2)}}
+.machine-info{position:absolute;bottom:7px;left:8px;z-index:12;font-size:10px;color:#c6e5e9;text-shadow:0 1px 4px #000}
+.mine>.ore{display:none}.mine>#mine{position:relative;z-index:15;min-width:85%;font-size:18px;box-shadow:0 5px 18px #ffba4a44}.mine>small{position:relative;z-index:15;text-align:center}
+@media(max-width:420px){.mine-world{height:245px}.mine{min-height:375px}.mining-machine{right:3%;transform:scale(.84);transform-origin:bottom right}.miner-character{left:10%;transform-origin:bottom left}.crystal-field{left:41%}.mine-title{font-size:10px}.live-dot{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.mine-world *{animation:none!important}}
 </style></head><body><main>
-<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.7.2</span></div>
+<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.8</span></div>
 <div class="note" id="authstatus" role="status" style="margin:0 0 14px">🔄 Verificando conexão com o Telegram...</div>
 <div class="stats">
 <div class="stat"><small>🪙 Ouro</small><strong id="gold">0</strong></div>
@@ -76,7 +111,16 @@ footer{line-height:1.6;margin-top:24px}
 </div>
 <div class="tabs" role="tablist"><button class="active" data-tab="mina">⛏️ Mina</button><button data-tab="missoes">🎯 Missões</button><button data-tab="amigos">👥 Amigos</button><button data-tab="ranking">🏆 Ranking</button></div>
 <section class="view active" id="view-mina"><div class="grid">
-<div class="stack"><div class="panel"><h2>💎 Sua mina</h2><div class="mine" id="minearea"><div class="ore" id="ore">💎</div><button class="primary" id="mine">⛏️ MINERAR +1</button><small>Toque para extrair ouro e ganhar experiência</small></div>
+<div class="stack"><div class="panel"><h2>💎 Sua mina</h2><div class="mine" id="minearea"><div class="mine-world" aria-label="Cenário animado de mineração">
+ <div class="world-stars"></div><div class="world-moon"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+ <div class="mine-title">⛏️ MINA DE CRISTAIS <span class="live-dot">● EM OPERAÇÃO</span></div>
+ <div class="world-platform"></div>
+ <div class="miner-character" aria-label="Minerador animado"><div class="miner-hat"><span>✦</span></div><div class="miner-head"><i></i><i></i></div><div class="miner-body"></div><div class="miner-arm miner-arm-left"></div><div class="miner-arm miner-arm-right"><span class="miner-pick">⚒</span></div><div class="miner-leg leg-left"></div><div class="miner-leg leg-right"></div></div>
+ <div class="crystal-field"><div class="crystal c1"></div><div class="crystal c2"></div><div class="crystal c3"></div><div class="crystal c4"></div><div class="crystal c5"></div></div>
+ <div class="mining-machine"><div class="machine-lights"><b></b><b></b><b></b></div><div class="machine-screen">⚡</div><div class="machine-gear">⚙</div><div class="machine-foot"></div></div>
+ <div class="world-dust dust1">✧</div><div class="world-dust dust2">✦</div><div class="world-dust dust3">✧</div>
+ <div class="machine-info">⚙️ Máquinas automáticas em funcionamento</div>
+</div><div class="ore" id="ore" aria-hidden="true">💎</div><button class="primary" id="mine">⛏️ MINERAR +1</button><small>Toque para extrair ouro e ganhar experiência</small></div>
 <div style="margin-top:13px" class="row"><b id="xptext">Experiência 0 / 20</b><span class="pill" id="crystal">💠 0 cristais</span></div><div class="progress"><div id="xpbar"></div></div></div></div>
 <div class="panel"><h2>🛒 Loja de melhorias</h2><div id="shop"></div></div>
 </div></section>
@@ -85,7 +129,7 @@ footer{line-height:1.6;margin-top:24px}
 <section class="view" id="view-ranking"><div class="panel"><h2>🏆 Ranking BETA</h2><p class="muted">Ranking online experimental por nível e ouro. Os valores ainda não são protegidos contra trapaças.</p><button id="refreshRanking">🔄 Atualizar ranking</button><div id="ranks"></div></div></section>
 <div class="row" style="margin-top:15px"><button id="save">💾 Salvar</button><button id="reset">🗑️ Reiniciar progresso</button></div>
 <div id="toast" class="note" role="status" style="display:none"></div>
-<footer>Crypto Mining Empire • BETA 0.6 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
+<footer>Crypto Mining Empire • BETA 0.8 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
 </main>
 <script>
 (()=>{

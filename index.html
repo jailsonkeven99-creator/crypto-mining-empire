@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Mining Empire | Telegram BETA 0.6.1</title>
+<title>Crypto Mining Empire | Telegram BETA 0.7</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#080e1c;--card:#15223a;--line:#304461;--muted:#a7bad3;--gold:#ffc44c;--mint:#57e0b0}
@@ -29,7 +29,7 @@ button:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-
 footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:12px}.top{align-items:flex-start}.tabs button{font-size:13px;padding:10px}.mine{min-height:265px}}
 </style></head><body><main>
-<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.6.1</span></div>
+<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.7</span></div>
 <div class="note" id="authstatus" role="status" style="margin:0 0 14px">🔄 Verificando conexão com o Telegram...</div>
 <div class="stats">
 <div class="stat"><small>🪙 Ouro</small><strong id="gold">0</strong></div>
@@ -43,12 +43,12 @@ footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 <div style="margin-top:13px" class="row"><b id="xptext">Experiência 0 / 20</b><span class="pill" id="crystal">💠 0 cristais</span></div><div class="progress"><div id="xpbar"></div></div></div></div>
 <div class="panel"><h2>🛒 Loja de melhorias</h2><div id="shop"></div></div>
 </div></section>
-<section class="view" id="view-missoes"><div class="panel"><h2>🎯 Missões diárias</h2><small>Renovadas a cada dia, no horário do seu dispositivo.</small><div id="missions"></div><div class="note">As recompensas são apenas ouro virtual da BETA. Não podem ser sacadas.</div></div></section>
-<section class="view" id="view-amigos"><div class="panel"><h2>👥 Convide amigos</h2><p class="muted">Compartilhe seu jogo com amigos no Telegram.</p><button class="primary" id="invite">📨 Compartilhar convite</button><button id="copyinvite">🔗 Copiar link</button><div class="note" id="inviteinfo">Bônus por indicação ainda não é automático. Precisaremos de servidor e validação para confirmar convites reais.</div></div></section>
-<section class="view" id="view-ranking"><div class="panel"><h2>🏆 Ranking BETA</h2><p class="muted">Ranking experimental: os valores enviados pelo navegador ainda não são verificados contra trapaças.</p><div id="ranks"></div></div></section>
+<section class="view" id="view-missoes"><div class="panel"><h2>🎯 Missões diárias</h2><small>Renovadas a cada dia, no horário do seu dispositivo.</small><div class="note" id="dailybox"><b>🎁 Presente diário</b><p>Receba 200 ouros virtuais uma vez por dia.</p><button class="primary" id="dailyreward">Resgatar 200 🪙</button></div><div id="missions"></div><div class="note">As recompensas são apenas ouro virtual da BETA. Não podem ser sacadas.</div></div></section>
+<section class="view" id="view-amigos"><div class="panel"><h2>👥 Convide amigos</h2><p class="muted">Compartilhe seu jogo com amigos no Telegram.</p><button class="primary" id="invite">📨 Compartilhar convite</button><button id="copyinvite">🔗 Copiar link</button><p class="muted" id="refinfo">Compartilhe seu link pessoal de convite.</p><div class="note" id="inviteinfo">Convites personalizados ativos. A contagem de amigos e bônus por indicação dependem de validação no servidor e ainda não estão habilitados.</div></div></section>
+<section class="view" id="view-ranking"><div class="panel"><h2>🏆 Ranking BETA</h2><p class="muted">Ranking online experimental por nível e ouro. Os valores ainda não são protegidos contra trapaças.</p><button id="refreshRanking">🔄 Atualizar ranking</button><div id="ranks"></div></div></section>
 <div class="row" style="margin-top:15px"><button id="save">💾 Salvar</button><button id="reset">🗑️ Reiniciar progresso</button></div>
 <div id="toast" class="note" role="status" style="display:none"></div>
-<footer>Crypto Mining Empire • BETA 0.6 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental</footer>
+<footer>Crypto Mining Empire • BETA 0.6 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
 </main>
 <script>
 (()=>{
@@ -100,15 +100,15 @@ const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD
    }catch(e){loaded=true;status.textContent='⚠️ Nuvem indisponível: '+String(e.message||'erro')+'. Progresso apenas local.';}
  }
 const today=()=>new Date().toLocaleDateString('en-CA');
-const fresh=()=>({gold:0,xp:0,level:1,crystals:0,clicks:0,earned:0,owned:{pick:0,worker:0,drill:0,robot:0},day:today(),dailyClicks:0,dailyEarned:0,claimed:{},last:Date.now()});
-const items=[{id:'pick',name:'⛏️ Picareta reforçada',base:15,mult:1.55,desc:'+1 ouro por clique'},{id:'worker',name:'👷 Minerador automático',base:35,mult:1.6,desc:'+1 ouro por segundo'},{id:'drill',name:'⚙️ Broca industrial',base:220,mult:1.65,desc:'+6 ouro por segundo'},{id:'robot',name:'🤖 Robô minerador',base:1400,mult:1.7,desc:'+30 ouro por segundo'}];
+const fresh=()=>({gold:0,xp:0,level:1,crystals:0,clicks:0,earned:0,owned:{pick:0,worker:0,drill:0,robot:0,laser:0,quantum:0},dailyRewardDay:"",day:today(),dailyClicks:0,dailyEarned:0,claimed:{},last:Date.now()});
+const items=[{id:'pick',name:'⛏️ Picareta reforçada',base:15,mult:1.55,desc:'+1 ouro por clique'},{id:'worker',name:'👷 Minerador automático',base:35,mult:1.6,desc:'+1 ouro por segundo'},{id:'drill',name:'⚙️ Broca industrial',base:220,mult:1.65,desc:'+6 ouro por segundo'},{id:'robot',name:'🤖 Robô minerador',base:1400,mult:1.7,desc:'+30 ouro por segundo'},{id:'laser',name:'🔦 Laser de mineração',base:5500,mult:1.75,desc:'+120 ouro por segundo'},{id:'quantum',name:'⚡ Escavadora quântica',base:25000,mult:1.85,desc:'+600 ouro por segundo'}];
 let s=fresh();let previous=null;
 try{previous=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem(OLD)||'null')}catch(e){}
 if(previous&&typeof previous==='object'){s=normalized(previous);}
 if(s.day!==today()){s.day=today();s.dailyClicks=0;s.dailyEarned=0;s.claimed={};}
 const fmt=n=>Math.floor(n).toLocaleString('pt-BR');
 const power=()=>1+s.owned.pick;
-const rate=()=>s.owned.worker+6*s.owned.drill+30*s.owned.robot;
+const rate=()=>s.owned.worker+6*s.owned.drill+30*s.owned.robot+120*s.owned.laser+600*s.owned.quantum;
 const cost=i=>Math.ceil(i.base*Math.pow(i.mult,s.owned[i.id]));
 function saveLocal(){
   try { s.last=Date.now(); localStorage.setItem(KEY,JSON.stringify(s)); }
@@ -140,14 +140,19 @@ const missions=[{id:'tap',name:'⛏️ Minerador dedicado',desc:'Clique 30 vezes
 function render(){
 $('gold').textContent=fmt(s.gold);$('rate').textContent=fmt(rate());$('power').textContent=fmt(power());$('level').textContent=fmt(s.level);$('mine').textContent='⛏️ MINERAR +'+fmt(power());$('crystal').textContent='💠 '+fmt(s.crystals)+' cristais';$('xptext').textContent='Experiência '+fmt(s.xp)+' / '+fmt(s.level*20);$('xpbar').style.width=Math.min(100,s.xp/(s.level*20)*100)+'%';
 $('shop').innerHTML=items.map(i=>`<div class="item row"><div><b>${i.name}</b><p>${i.desc} · Possui ${s.owned[i.id]}</p><span class="pill">🪙 ${fmt(cost(i))}</span></div><button data-buy="${i.id}" ${s.gold<cost(i)?'disabled':''}>Comprar</button></div>`).join('');
+$('dailyreward').disabled=s.dailyRewardDay===today();$('dailyreward').textContent=s.dailyRewardDay===today()?'✅ Presente recebido hoje':'🎁 Resgatar 200 🪙';
 $('missions').innerHTML=missions.map(m=>{const p=Math.min(m.target,m.progress());return `<div class="mission"><div style="flex:1"><b>${m.name}</b><p>${m.desc} · ${fmt(p)}/${fmt(m.target)} · Prêmio: ${fmt(m.reward)} ouros</p><div class="progress"><div style="width:${p/m.target*100}%"></div></div></div><button data-claim="${m.id}" ${s.claimed[m.id]||p<m.target?'disabled':''}>${s.claimed[m.id]?'Feito':'Resgatar'}</button></div>`}).join('');
 if(!cloudReady)$('ranks').innerHTML=`<div class="rank"><b>🥇 Você (neste dispositivo)</b><b>${fmt(s.earned)} 🪙</b></div><div class="note">Ainda não existem posições de outros jogadores nesta versão.</div>`;
 }
+$('dailyreward').onclick=()=>{if(s.dailyRewardDay===today())return;s.dailyRewardDay=today();s.gold+=200;s.earned+=200;save();render();toast('🎁 Presente diário: +200 ouros!');};
+$('refreshRanking').onclick=async()=>{if(!cloudReady){toast('Abra pelo Telegram para consultar o ranking online.');return;}await loadRanking();toast('Ranking atualizado.');};
 $('mine').onclick=()=>{if(!loaded)return;addGold(power(),true);const ore=$('ore');ore.classList.add('hit');setTimeout(()=>ore.classList.remove('hit'),140);const a=document.createElement('span');a.className='spark';a.textContent='+'+fmt(power());a.style.left=(42+Math.random()*17)+'%';a.style.top='45%';$('minearea').append(a);setTimeout(()=>a.remove(),750);save();};
 $('shop').onclick=e=>{if(!loaded)return;const b=e.target.closest('[data-buy]');if(!b)return;const i=items.find(i=>i.id===b.dataset.buy);if(!i||s.gold<cost(i))return;s.gold-=cost(i);s.owned[i.id]++;save();render();toast('Melhoria comprada!');};
 $('missions').onclick=e=>{if(!loaded)return;const b=e.target.closest('[data-claim]');if(!b)return;const m=missions.find(m=>m.id===b.dataset.claim);if(!m||s.claimed[m.id]||m.progress()<m.target)return;s.gold+=m.reward;s.earned+=m.reward;s.claimed[m.id]=true;save();render();toast('🎁 +'+fmt(m.reward)+' ouros!');};
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+b.dataset.tab));render();});
-const inviteURL='https://t.me/CryptoMiningEmpireGameBot?startapp';
+const myId=tg?.initDataUnsafe?.user?.id;
+const inviteURL='https://t.me/CryptoMiningEmpireGameBot?startapp'+(Number.isSafeInteger(myId)?'=ref_'+myId:'');
+$('refinfo').textContent=Number.isSafeInteger(myId)?'Seu link pessoal de convite está pronto. Compartilhe com amigos!':'Abra no Telegram para gerar seu link pessoal.';
 $('invite').onclick=()=>{const share='https://t.me/share/url?url='+encodeURIComponent(inviteURL)+'&text='+encodeURIComponent('⛏️ Venha jogar Crypto Mining Empire comigo!');if(tg?.openTelegramLink){tg.openTelegramLink(share)}else window.open(share,'_blank','noopener');};
 $('copyinvite').onclick=async()=>{try{await navigator.clipboard.writeText(inviteURL);toast('Link copiado!')}catch(e){prompt('Copie o link:',inviteURL)}};
 $('save').onclick=async()=>{if(!loaded)return;save();await cloudSave();toast(cloudReady&&!dirty?'☁️ Salvo online!':'💾 Salvo localmente; nuvem pendente.');};

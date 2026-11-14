@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Mining Empire | Telegram BETA 0.7.1</title>
+<title>Crypto Mining Empire | Telegram BETA 0.7.2</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#080e1c;--card:#15223a;--line:#304461;--muted:#a7bad3;--gold:#ffc44c;--mint:#57e0b0}
@@ -28,8 +28,45 @@ button:disabled{opacity:.45;cursor:not-allowed}.grid{display:grid;grid-template-
 .rank{display:flex;justify-content:space-between;padding:13px;border-bottom:1px solid var(--line)}.rank:last-child{border:0}
 footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:12px}.top{align-items:flex-start}.tabs button{font-size:13px;padding:10px}.mine{min-height:265px}}
+
+/* BETA 0.7.2 - interface premium neon / ouro */
+:root{--bg:#060b17;--card:#13213a;--line:#35517b;--gold:#ffd15c;--mint:#5ef2c2}
+body{background:radial-gradient(ellipse at 50% -15%,#254c76 0%,#0b1630 36%,#060b17 75%);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:radial-gradient(#8ccaff 0.7px,transparent 0.7px);background-size:22px 22px}
+main{position:relative;max-width:1040px;padding:18px 14px 90px}
+.top{padding:16px 16px 18px;margin:0 0 16px;background:linear-gradient(120deg,#1b3254d9,#101d34c9);border:1px solid #3b5e86;border-radius:20px;box-shadow:0 10px 30px #0005}
+h1{font-size:clamp(23px,5vw,34px);letter-spacing:-.6px;text-shadow:0 2px 16px #ffba4340}
+.top small{display:block;margin-top:7px;line-height:1.45}
+.tag{background:#152b47;border:1px solid #6d8ab0;color:#d5e8ff;font-weight:800;box-shadow:inset 0 0 14px #579bff1a}
+#authstatus{background:linear-gradient(95deg,#102f43,#123c45);border:1px solid #2d8a8d;border-left:4px solid #5cf0c4;color:#d8fff3;box-shadow:0 6px 22px #0003;padding:14px 15px;font-weight:650}
+.stats{gap:11px}
+.stat,.panel{background:linear-gradient(145deg,#1b3253,#101b32 80%);border:1px solid #3b577b;box-shadow:0 10px 24px #0004,inset 0 1px 0 #ffffff10;border-radius:19px}
+.stat{position:relative;overflow:hidden;min-height:105px;padding:16px}
+.stat:after{content:"";position:absolute;width:85px;height:85px;right:-44px;top:-48px;border-radius:50%;background:#ffcd5020;filter:blur(12px)}
+.stat small{font-size:12px;color:#bed1e9;font-weight:700}
+.stat strong{font-size:clamp(25px,5vw,34px);color:#ffd363;letter-spacing:-.8px;text-shadow:0 0 20px #ffc44c28}
+.stat:nth-child(2) strong{color:#6ff5d4}
+.stat:nth-child(4) strong{color:#a5baff}
+.tabs{gap:9px;margin:19px 0 16px}
+.tabs button{border-radius:14px;background:#1b3152;border:1px solid #43628d;box-shadow:0 5px 14px #0003;padding:13px 12px;font-weight:800;transition:transform .15s,background .15s}
+.tabs button.active{background:linear-gradient(135deg,#ffe17b,#f6a923);color:#241805;box-shadow:0 5px 18px #ffc44c3b}
+button:active{transform:scale(.97)}
+.panel{padding:18px}
+h2{font-size:20px;letter-spacing:-.3px}
+.mine{min-height:310px;background:radial-gradient(circle at 50% 55%,#226c85 0%,#183452 40%,#0b172d 85%);border:1px solid #3987a4;box-shadow:inset 0 0 48px #2bd7f01c}
+.ore{font-size:112px;filter:drop-shadow(0 0 26px #2be8ff88)}
+.mine button.primary{font-size:19px;border-radius:16px;padding:17px 29px;box-shadow:0 7px 0 #a96c14,0 13px 24px #0007}
+.mine button.primary:active{box-shadow:0 3px 0 #a96c14;transform:translateY(4px)}
+.item{padding:16px 0}.item b{color:#f5faff}.item .pill{margin-top:5px}
+.item button:not(:disabled),#dailyreward:not(:disabled){background:linear-gradient(120deg,#ffd773,#efa928);border:0;color:#211807;font-weight:900}
+.pill{background:#244969;border:1px solid #3d7396;color:#dcf4ff}
+.progress{height:11px;background:#223b59}.progress div{background:linear-gradient(90deg,#36c8e5,#65f3c4)}
+.note{border-radius:14px;line-height:1.5}
+#toast{border-left:4px solid #ffd15c}
+footer{line-height:1.6;margin-top:24px}
+@media(max-width:720px){main{padding:10px 10px 76px}.top{padding:13px}.stat{min-height:94px;padding:13px}.stats{gap:9px}.tabs button{padding:12px 10px}.panel{padding:15px}.mine{min-height:285px}}
 </style></head><body><main>
-<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.7.1</span></div>
+<div class="top"><div><h1>⛏️ Crypto Mining Empire</h1><small>Mineração idle • Telegram Mini App • Sem dinheiro real</small></div><span class="tag">BETA 0.7.2</span></div>
 <div class="note" id="authstatus" role="status" style="margin:0 0 14px">🔄 Verificando conexão com o Telegram...</div>
 <div class="stats">
 <div class="stat"><small>🪙 Ouro</small><strong id="gold">0</strong></div>
@@ -48,7 +85,7 @@ footer{color:#8198b7;font-size:12px;text-align:center;margin-top:20px}
 <section class="view" id="view-ranking"><div class="panel"><h2>🏆 Ranking BETA</h2><p class="muted">Ranking online experimental por nível e ouro. Os valores ainda não são protegidos contra trapaças.</p><button id="refreshRanking">🔄 Atualizar ranking</button><div id="ranks"></div></div></section>
 <div class="row" style="margin-top:15px"><button id="save">💾 Salvar</button><button id="reset">🗑️ Reiniciar progresso</button></div>
 <div id="toast" class="note" role="status" style="display:none"></div>
-<footer>Crypto Mining Empire • BETA 0.7.1 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
+<footer>Crypto Mining Empire • BETA 0.6 • Sem token, Pix ou recompensas financeiras • Salvamento local e online experimental • Convites sem bônus automático</footer>
 </main>
 <script>
 (()=>{
@@ -71,33 +108,42 @@ const $=id=>document.getElementById(id), KEY='crypto-mining-empire-beta-v04',OLD
  }
  async function verifyTelegram(){
    const status=$('authstatus');
-   if(!tg?.initData){loaded=true;status.textContent='ℹ️ Demonstração local: abra pelo Telegram para salvar online.';return;}
-   status.textContent='⛏️ Mineração ativa. Conectando à nuvem...';
+   if(!tg?.initData){loaded=true;status.textContent='⛏️ Modo local ativo. Abra pelo Telegram para sincronizar.';return;}
+   status.textContent='☁️ Conectando à sua conta... Mineração ativa.';
    const startRevision=revision;
    try{
-     const data=await Promise.race([api('load'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Tempo de conexão excedido')),10000))]);
+     const data=await Promise.race([api('load'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Tempo de conexão excedido')),12000))]);
      const p=data.player;
      if(!p)throw Error('Jogador não encontrado');
      const state=p.state&&typeof p.state==='object'?p.state:{};
      const hasCloudProgress=Object.keys(state).length>0 || Number(p.earned)>0 || Number(p.level)>1 || Number(p.gold)>0;
      const hasLocalProgress=s.earned>0 || s.level>1 || s.gold>0 || Object.values(s.owned).some(Boolean);
+     // Se a mineração avançou durante a conexão, nunca substituir o estado local por um snapshot antigo.
      if(revision!==startRevision){
-       cloudReady=true; loaded=true; render();
-       status.textContent='⛏️ Mineração ativa. Progresso local mantido; salvamento online pendente.';
+       cloudReady=true; loaded=true;
+       dirty=true; revision++;
+       status.textContent='☁️ Conta conectada. Sincronizando mineração recente...';
+       await cloudSave();
+       await loadRanking();
        return;
      }
      if(hasCloudProgress){
-       s=normalized({...state,gold:p.gold,level:p.level,xp:p.xp,crystals:p.crystals,earned:p.earned,owned:p.equipment||state.owned});
+       // Preserva o progresso local quando ele é mais recente/valioso que o snapshot remoto.
+       if(hasLocalProgress && Number(s.earned)>Number(p.earned||0)){
+         dirty=true;revision++;
+       }else{
+         s=normalized({...state,gold:p.gold,level:p.level,xp:p.xp,crystals:p.crystals,earned:p.earned,owned:p.equipment||state.owned});
+       }
      }else if(hasLocalProgress && confirm('Encontramos seu progresso antigo neste navegador. Deseja enviar esse progresso para sua conta online?')){
        dirty=true;revision++;
-     }else{
+     }else if(!hasLocalProgress){
        s=normalized({...state,gold:p.gold,level:p.level,xp:p.xp,crystals:p.crystals,earned:p.earned,owned:p.equipment||state.owned});
      }
      cloudReady=true;loaded=true;render();saveLocal();
-     status.textContent='✅ Telegram verificado. ☁️ Salvamento online experimental ativo.';
+     status.textContent='☁️ Telegram verificado. Conexão online ativa.';
      if(dirty)await cloudSave();
      await loadRanking();
-   }catch(e){loaded=true;status.textContent='⚠️ Nuvem indisponível: '+String(e.message||'erro')+'. Progresso apenas local.';}
+   }catch(e){loaded=true;status.textContent='⚠️ Sem confirmação da nuvem: '+String(e.message||'erro')+'. Progresso local mantido.';}
  }
 const today=()=>new Date().toLocaleDateString('en-CA');
 const fresh=()=>({gold:0,xp:0,level:1,crystals:0,clicks:0,earned:0,owned:{pick:0,worker:0,drill:0,robot:0,laser:0,quantum:0},dailyRewardDay:"",day:today(),dailyClicks:0,dailyEarned:0,claimed:{},last:Date.now()});
@@ -124,6 +170,7 @@ async function cloudSave(){
  try{
    await api('save',progress);
    if(revision===savedRevision)dirty=false;
+   $('authstatus').textContent='✅ Último salvamento online confirmado. Mineração ativa!';
  }catch(e){$('authstatus').textContent='⚠️ Falha ao salvar na nuvem. Seu progresso continua neste navegador.';}
  finally{cloudBusy=false;}
 }
